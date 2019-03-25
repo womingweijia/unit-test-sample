@@ -1,0 +1,32 @@
+server:
+  port: 8086
+  session-timeout: 30
+  tomcat.max-threads: 2
+  tomcat.uri-encoding: UTF-8
+
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/unittest #应该使用生产环境的真实链接
+    username: root
+    password: root
+  jackson:
+    default-property-inclusion: non_null
+
+
+mybatis:
+  mapper-locations: classpath:com/k2data/unittest/example/unittestsample/base/dao/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
+  type-aliases-package: com.k2data.unittest.example.unittestsample.domain  # 注意：对应实体类的路径
+
+#mybatis:
+#  config-locations: classpath:mybatis-config.xml
+#  mapper-locations: classpath:mapper/*.xml
+
+
+#pagehelper分页插件
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
